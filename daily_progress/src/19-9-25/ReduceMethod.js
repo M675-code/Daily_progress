@@ -23,6 +23,8 @@ var values = [[1,2,3, [4,5,6]]]
 /* - prev  = [1,2.3], next = [4,5,6] */
 
 
-var flatterAway = values.reduce(function(prev,next){
+var flattedArray = values.reduce(function(prev,next){
     return prev.concat(next)
 }, [])
+
+console.log(flattedArray);
