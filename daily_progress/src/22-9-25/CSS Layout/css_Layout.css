@@ -1,0 +1,11 @@
+ul{
+    list-style: none;
+    font-size: 0;
+}
+ul li{
+    display: inline-block;
+    background-color: #222;
+    color: #fff;
+    padding: 1rem;
+    font-size: 2rem;
+}
