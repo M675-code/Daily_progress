@@ -1,0 +1,12 @@
+li:nth-child(3n + 2){
+    color: red;
+}
+li:first-child{
+    color: red;
+}
+li:first-of-type{
+    color: red;
+}
+li.foo ~ li{
+    color: red;
+}
