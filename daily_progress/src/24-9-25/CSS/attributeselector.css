@@ -1,0 +1,15 @@
+[data-content="Hello"]{
+    color: red;
+}
+[class="foo2"]{
+    color: red;
+}
+[class^="foo"]{     /*begin with class^="starting characters"*/
+    color: red;
+}
+[class$="az"]{     /*end with class$="end characters"*/
+    color: red;
+}
+[class*="foo"]{     /*contains with class*="any string characters == same string characters in class"*/
+    color: red;
+}

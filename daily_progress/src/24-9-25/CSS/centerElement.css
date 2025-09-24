@@ -1,0 +1,19 @@
+p{
+    background-color: plum;
+    text-align: center;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.outer{
+    height: 80vh;
+    background-color: plum;
+    position: relative;
+}
+.inner{
+    background: #bada55;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
