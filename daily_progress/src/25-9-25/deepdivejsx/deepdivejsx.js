@@ -4,11 +4,11 @@ import './deepdivejsx.css';
 
 class HelloWorld extends React.Component{
     getName(){
-        return "Shoaib";
+        return "Mahak";
     }
     constructor(){
         super();
-        this.name="Shoaib";
+        this.name="Mahak";
     }
     render(){
         return(
