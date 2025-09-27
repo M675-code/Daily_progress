@@ -2,7 +2,9 @@ import React,{ Component } from "react";
 import logo from "./logo.svg";
 import "./Reactapp.css";
 
-class StateReact_app extends Component{
+import Counter from './Props/Counter'
+
+class PropsReact_app extends Component{
     constructor(){
         super();
 
@@ -16,6 +18,7 @@ class StateReact_app extends Component{
 
     incrementCounter(){
         let count = this.state.count;
+        
         this.setState({
             count: ++count
         });
@@ -23,14 +26,14 @@ class StateReact_app extends Component{
 
     render(){
         return (
-            <div className="StateReact_app">
-                {this.state.count}  
-                <div>
-                    <button onClick={this.incrementCounter}> Add Counter</button> 
-                </div>
+            <div className="PropsReact_app">
+                <Counter 
+                count={this.state.count} 
+                incrementCounter={this.incrementCounter}
+                />    
             </div>
         );
     }
 }
 
-export default StateReact_app;
+export default PropsReact_app;

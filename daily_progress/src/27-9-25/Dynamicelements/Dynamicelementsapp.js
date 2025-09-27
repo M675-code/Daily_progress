@@ -2,12 +2,15 @@ import React,{ Component } from "react";
 import logo from "./logo.svg";
 import "./Reactapp.css";
 
-class StateReact_app extends Component{
+import Counter from '../Props/Counter'
+
+class DynamicelementsReact_app extends Component{
     constructor(){
         super();
 
         this.state = {
-            count: 0
+            count: 0,
+            fruits: ["banana","Apple","Oranges"]
         };
 
         this.incrementCounter = this.incrementCounter.bind(this);
@@ -16,6 +19,7 @@ class StateReact_app extends Component{
 
     incrementCounter(){
         let count = this.state.count;
+        
         this.setState({
             count: ++count
         });
@@ -23,14 +27,13 @@ class StateReact_app extends Component{
 
     render(){
         return (
-            <div className="StateReact_app">
-                {this.state.count}  
-                <div>
-                    <button onClick={this.incrementCounter}> Add Counter</button> 
-                </div>
-            </div>
+            <ul className="DynamicelementsReact_app">
+                {this.state.fruits.map((fruit, index) => {
+                    return <li key={index}>{fruit}</li>
+                })}    
+            </ul>
         );
     }
 }
 
-export default StateReact_app;
+export default DynamicelementsReact_app;
