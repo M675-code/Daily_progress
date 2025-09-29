@@ -1,18 +1,51 @@
 import React, { Component } from "react";
 import logo from "/logo.svg"
+import ReactTodolist from "./ReactTodolist.css"
 
 import AddTodo from "./Addtodo";
+import TodoItem from "./TodoItem";
 
 class ReactTodolist extends Component{
     state ={
         todos: [
             {
-            text: "Buy Milk"
+            text: "Buy Milk",
+            completed: false
             },
             {
-            text: "Buy Bread"
+            text: "Buy Bread",
+            completed: true
             }
         ]
+    };
+
+    toggleComplete = index => {
+        const newTodos = this.state.todos.map((todo, i) => {
+            if(index ===i){
+                return{
+                    ...todo,
+                    completed: !todo.completed
+                };
+            }
+
+            return todo;
+        }); 
+
+        this.setState({
+            todos: newTodos
+        })
+    };
+
+    deleteTodoFromState = (index) => {
+        const newTodos = this.state.todos.filter((todo, i) => {
+            if(index===i){
+                return false;
+            }
+            return true;
+        });
+        this.setState({
+            todos: newTodos
+        });
     };
 
     addTodoToState = text => {
@@ -28,7 +61,14 @@ class ReactTodolist extends Component{
     render(){
         return <div className="ReactTodolist">
             {this.state.todos.map((todo, index) => {
-                return <li key={index}>{todo.text}</li>
+                return (
+                <TodoItem 
+                toggleComplete={this.toggleComplete} 
+                deleteTodoFromState={this.deleteTodoFromState}
+                todo={todo} 
+                index={index}
+                key={{index}} 
+                />)
             })}
 
             <AddTodo addTodoState = {this.addTodoToState}/>
