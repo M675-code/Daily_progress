@@ -36,13 +36,31 @@ class ReactTodolist extends Component{
         })
     };
 
-    deleteTodoFromState = (index) => {
+    deleteTodoFromState = index => {
         const newTodos = this.state.todos.filter((todo, i) => {
             if(index===i){
                 return false;
             }
             return true;
         });
+        this.setState({
+            todos: newTodos
+        });
+    };
+    
+
+    editTodoFromState = (index,newText) => {
+        const newTodos = this.state.todos.map((todo,i) => {
+            if(index === i){
+                return{
+                    ...todo,
+                    text: newText
+                };
+            }
+
+            return todo;
+        });
+
         this.setState({
             todos: newTodos
         });
@@ -65,6 +83,7 @@ class ReactTodolist extends Component{
                 <TodoItem 
                 toggleComplete={this.toggleComplete} 
                 deleteTodoFromState={this.deleteTodoFromState}
+                editTodoFromState={this.editTodoFromState}
                 todo={todo} 
                 index={index}
                 key={{index}} 
