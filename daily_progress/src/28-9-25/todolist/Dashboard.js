@@ -1,12 +1,14 @@
 import React from "react";
 import axios from "axios";
 
+import PostsList from "./PostsList";
+
 
 class Dashboard extends React.Component {
 
     state = {
         users: [],
-        selectedUser: ""
+        selectedUser: null
     };
 
     componentDidCatch(){
@@ -29,10 +31,18 @@ class Dashboard extends React.Component {
         <div className="container">
             <div className="row">
                 <section className="col-sm">
-                    <ul className ="list-group">
+                    {users.length === 0 ? (
+                        "Loading..." 
+                        ): (
+                            <ul className ="list-group">
                         {users.map((user) => {
                             
-                            return <li key={user.id} className={`list-group-item ${user.id === selectedUser.id ? "active" : ""}`} onClick={() => {
+                            return <
+                                li key={user.id} 
+                                className={`list-group-item ${
+                                    user.id === selectedUser.id ? "active" : ""}
+                                    `} 
+                                    onClick={() => {
                                 this.changeSelectedUser(user);
                             }}>
                                 {user.name}
@@ -40,8 +50,13 @@ class Dashboard extends React.Component {
 
                         })}
                     </ul>
+                    ) }
+                    
                 </section>
-                <section className="col-md">Post Details</section>
+                <section className="col-md">
+                    {selectedUser != null && <PostsList user={selectedUser} />
+} 
+                </section>
             </div>
             
         </div>
