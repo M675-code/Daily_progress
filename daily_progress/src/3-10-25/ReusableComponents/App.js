@@ -1,30 +1,21 @@
 import React, { Component } from "react"
 
-import State from "./Components/State";
+import Hover from "./ComponeList/Hover";
 
 class App extends Component {
     render() {
         return (
-            <div className="App">;
-               <State initial={{loading: false, data: null}}>
-                    {({ state , setState }) => {
-                        return <div>{JSON.stringify(state)}
-                            <div onClick={() =>setState({
-                                loading: true
-                            })}>Toggle Loading</div>
-                        </div>
-                    }}
-               </State> 
+            <div className="App">
+                <Hover>
+                    {({hovered, bind}) => (<section>
+                        <button style={{
+                            backgroundColor: hovered ? "green" : "blue"
+                        }} {...bind}>Hover Me</button>
+                        {hovered ? "hovering" : "not hovering"}
+                    </section>
+                )}
+                </Hover>
 
-               <State initial={{ count : 0}}>
-                    {({ state , setState }) => {
-                        return <div>{JSON.stringify(state)}
-                            <div onClick={() =>setState({
-                                count: state.count + 1
-                             })}>Inc Count</div>
-                        </div>
-                    }}
-               </State> 
             </div>
         );
     }
